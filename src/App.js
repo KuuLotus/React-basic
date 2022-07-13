@@ -1,26 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, useContext } from "react";
+import NaritaRyoContext from ".";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const naritaryoInfo = useContext(NaritaRyoContext);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  useEffect(() => {
+    console.log("Hello Hooks");
+  }, [count]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          React テスト　あああああ
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>useState, useEffect</h1>
+      <button onClick={handleClick}>＋</button>
+      <p>{count}</p>
+
+      <hr />
+      <h1>useContext</h1>
+      <p>{naritaryoInfo.name}</p>
+      <p>{naritaryoInfo.age}</p>
     </div>
   );
 }
